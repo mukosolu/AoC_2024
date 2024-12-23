@@ -16,6 +16,19 @@ func GetWordScannerFromFile(fileName string) (*bufio.Scanner, *os.File) {
 	scanner.Split(bufio.ScanWords)
 	return scanner, f
 }
+func GetWordScannerFromLine(scannedLine string) (*bufio.Scanner) {
+	scanner := bufio.NewScanner(strings.NewReader(scannedLine))
+	scanner.Split(bufio.ScanWords)
+	return scanner
+}
+
+func GetLineScannerFromFile(fileName string) (*bufio.Scanner, *os.File) {
+	f, err := os.Open(fileName)
+	Check(err)
+
+	scanner := bufio.NewScanner(f)
+	return scanner, f
+}
 
 func GetIntFromWordScanner(wordscanner *bufio.Scanner) int {
 	i, e := strconv.Atoi(wordscanner.Text())
