@@ -1,0 +1,48 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "go",
+			"label": "go: build workspace",
+			"command": "build",
+			"args": [
+				"./..."
+			],
+			"problemMatcher": [
+				"$go"
+			],
+			"group": "build",
+			"detail": "cd /workspaces/AoC_2024; go build ./..."
+		},
+		{
+			"type": "go",
+			"label": "go: build package",
+			"command": "build",
+			"args": [
+				"${fileDirname}"
+			],
+			"problemMatcher": [
+				"$go"
+			],
+			"group": "build",
+			"detail": "cd /workspaces/AoC_2024; go build ${fileDirname}"
+		},
+		{
+			"type": "shell",
+			"label": "wget: get input",
+			"command": "wget",
+			"args": [
+				"https://adventofcode.com/2024/day/${fileDirnameBasename}/input",
+				"--no-cookies",
+				"--header",
+				"Cookie:session=53616c7465645f5fc0d721e0dc0abe0bd66e9aaafcb6c901b2fd50e4e8fba0028bc4932168a8fedd58f5d99d65ea8f8af37e860645d83bac0369da56702bdf2d"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"group": "none",
+			"detail": "wget https://adventofcode.com/2024/day/?/input ",
+			"problemMatcher": []
+		}
+	]
+}
