@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -16,7 +17,7 @@ func GetWordScannerFromFile(fileName string) (*bufio.Scanner, *os.File) {
 	scanner.Split(bufio.ScanWords)
 	return scanner, f
 }
-func GetWordScannerFromLine(scannedLine string) (*bufio.Scanner) {
+func GetWordScannerFromLine(scannedLine string) *bufio.Scanner {
 	scanner := bufio.NewScanner(strings.NewReader(scannedLine))
 	scanner.Split(bufio.ScanWords)
 	return scanner
