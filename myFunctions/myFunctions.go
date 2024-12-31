@@ -9,30 +9,27 @@ import (
 	"time"
 )
 
-func GetWordScannerFromFile(fileName string) (*bufio.Scanner, *os.File) {
+func GetScannerFromFile(fileName string, splitfunc bufio.SplitFunc) (*bufio.Scanner, *os.File) {
 	f, err := os.Open(fileName)
 	Check(err)
 
 	scanner := bufio.NewScanner(f)
-	scanner.Split(bufio.ScanWords)
+	scanner.Split(splitfunc)
 	return scanner, f
 }
-func GetWordScannerFromLine(scannedLine string) *bufio.Scanner {
+
+func GetScannerFromString(scannedLine string, splitfunc bufio.SplitFunc) *bufio.Scanner {
 	scanner := bufio.NewScanner(strings.NewReader(scannedLine))
-	scanner.Split(bufio.ScanWords)
+	scanner.Split(splitfunc)
 	return scanner
 }
 
-func GetLineScannerFromFile(fileName string) (*bufio.Scanner, *os.File) {
-	f, err := os.Open(fileName)
-	Check(err)
-
-	scanner := bufio.NewScanner(f)
-	return scanner, f
+func GetIntFromWordScanner(wordscanner *bufio.Scanner) int {
+	return GetIntFromString(wordscanner.Text())
 }
 
-func GetIntFromWordScanner(wordscanner *bufio.Scanner) int {
-	i, e := strconv.Atoi(wordscanner.Text())
+func GetIntFromString(scannedLine string) int {
+	i, e := strconv.Atoi(scannedLine)
 	Check(e)
 	return i
 }

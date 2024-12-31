@@ -1,6 +1,7 @@
 package day1
 
 import (
+	"bufio"
 	"fmt"
 	"myFunctions"
 	"runtime"
@@ -71,7 +72,7 @@ func Part2(arr1 []int, arr2 []int) {
 }
 
 func main() {
-	wordscanner, f := myFunctions.GetWordScannerFromFile("input")
+	wordscanner, f := myFunctions.GetScannerFromFile("input", bufio.ScanWords)
 	defer f.Close()
 
 	var arr1 []int

@@ -1,4 +1,4 @@
-package main
+package day2
 
 import (
 	"bufio"
@@ -77,7 +77,7 @@ func amIaTrueLevel(wordscanner *bufio.Scanner, numberofpermittedtransgressions i
 }
 
 func main() {
-	linescanner, f := myFunctions.GetLineScannerFromFile("input")
+	linescanner, f := myFunctions.GetScannerFromFile("input", bufio.ScanLines)
 	defer f.Close()
 
 	ch := make(chan bool)
@@ -87,7 +87,7 @@ func main() {
 			//Part1
 			//ch <- amIaTrueLevel(myFunctions.GetWordScannerFromLine(linescanner.Text()), 0)
 			//Part2
-			ch <- amIaTrueLevel(myFunctions.GetWordScannerFromLine(linescanner.Text()), 1)
+			ch <- amIaTrueLevel(myFunctions.GetScannerFromString(linescanner.Text(), bufio.ScanWords), 1)
 
 		}
 	}()

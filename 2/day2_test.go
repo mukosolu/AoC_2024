@@ -2,7 +2,7 @@
 //There must be a better way of defining the test cases.
 //Investigation needed and to be done in subsequent riddles
 
-package main
+package day2
 
 import (
 	"slices"
