@@ -28,6 +28,14 @@ func GetIntFromWordScanner(wordscanner *bufio.Scanner) int {
 	return GetIntFromString(wordscanner.Text())
 }
 
+func GetIntArrayFromWordScanner(wordscanner *bufio.Scanner) []int {
+	var arr []int
+	for wordscanner.Scan() {
+		arr = append(arr, GetIntFromString(wordscanner.Text()))
+	}
+	return arr
+}
+
 func GetIntFromString(scannedLine string) int {
 	i, e := strconv.Atoi(scannedLine)
 	Check(e)
