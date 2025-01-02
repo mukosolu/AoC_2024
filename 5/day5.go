@@ -1,4 +1,4 @@
-package main
+package day5
 
 import (
 	"bufio"
@@ -32,7 +32,7 @@ func commaSplitFunc(data []byte, atEOF bool) (advance int, token []byte, err err
 	return
 }
 
-func SearchForAnyIn(needle []int, haystack []int) (int, int) {
+func searchForAnyIn(needle []int, haystack []int) (int, int) {
 	for i, i_val := range needle {
 		for _, j_val := range haystack {
 			if i_val == j_val {
@@ -45,7 +45,7 @@ func SearchForAnyIn(needle []int, haystack []int) (int, int) {
 
 func day5Part1_afterRulesViolateded(after_rules map[int][]int, update []int) (int, int, int, int) {
 	for i, v := range update {
-		i2, v2 := SearchForAnyIn(update[i+1:], after_rules[v])
+		i2, v2 := searchForAnyIn(update[i+1:], after_rules[v])
 		if i2 != -1 && v2 != -1 {
 			return i, v, i + 1 + i2, v2
 		}
